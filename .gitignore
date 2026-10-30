@@ -1,0 +1,6 @@
+# Source spreadsheet contains instructor names/emails; only the stripped
+# web/data/courses.json is published. Rebuild locally with ./run.sh.
+*.xlsx
+.DS_Store
+node_modules/
+__pycache__/

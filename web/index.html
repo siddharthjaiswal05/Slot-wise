@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SlotWise</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2314325c'/><rect x='7' y='8' width='8' height='7' rx='2' fill='%2389b4ef'/><rect x='17' y='8' width='8' height='12' rx='2' fill='%237aa05a'/><rect x='7' y='17' width='8' height='7' rx='2' fill='%23ffffff'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo" aria-hidden="true"></span>SlotWise</div>
+    <div class="source" id="source"></div>
+  </header>
+
+  <main>
+    <section class="card entry">
+      <h2>Enter courses taken</h2>
+      <div class="entry-row">
+        <label class="field branch">Branch:
+          <select id="branch"><option value="">Select Branch</option></select>
+        </label>
+        <label class="field course">Course:
+          <select id="course" disabled><option value="">Select Course</option></select>
+        </label>
+        <div class="entry-buttons">
+          <button class="pill" id="add" disabled>ADD</button>
+          <button class="pill" id="reset">RESET</button>
+        </div>
+      </div>
+      <p class="hint" id="addHint"></p>
+    </section>
+
+    <fieldset class="credits">
+      <legend id="creditsLabel">Total Credits : 00</legend>
+      <div class="chips" id="chips"><span class="empty">No courses added yet.</span></div>
+    </fieldset>
+
+    <div class="actions">
+      <button class="action" id="openAvailable">Check Available Courses</button>
+      <button class="action" id="openTopics">Topic Base Recommendation</button>
+    </div>
+
+    <section class="card timetable">
+      <div class="tt-head">
+        <h2>Weekly Timetable</h2>
+        <div class="menu-wrap">
+          <button class="hamburger" id="menuBtn" aria-label="Menu" aria-haspopup="true" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="menu" id="menu" hidden>
+            <button data-act="print">Print / Save as PDF</button>
+            <button data-act="copy">Copy course list</button>
+            <button data-act="link">Copy share link</button>
+            <button data-act="export">Export plan (.json)</button>
+            <button data-act="import">Import plan…</button>
+            <button data-act="clear" class="danger">Clear timetable</button>
+          </div>
+          <input type="file" id="importFile" accept="application/json,.json" hidden>
+        </div>
+      </div>
+      <div class="legend">
+        <span><i class="sw ok"></i>No clash</span>
+        <span><i class="sw bad"></i>Clash</span>
+        <span>Lec = lecture · Tut = tutorial · Prc = lab</span>
+      </div>
+      <div class="grid-scroll">
+        <div class="grid" id="grid"></div>
+      </div>
+      <div class="unscheduled" id="unscheduled" hidden></div>
+    </section>
+  </main>
+
+  <dialog id="panel">
+    <form method="dialog" class="panel-head">
+      <h3 id="panelTitle"></h3>
+      <button class="close" aria-label="Close">×</button>
+    </form>
+    <div class="panel-filters" id="panelFilters"></div>
+    <div class="panel-meta" id="panelMeta"></div>
+    <div class="panel-body" id="panelBody"></div>
+  </dialog>
+
+  <div class="popover" id="popover" hidden></div>
+  <div class="toast" id="toast" hidden></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
